@@ -39,7 +39,7 @@ const ReservationScreen = () => {
       <nav className="bg-wine-900 text-white py-6 px-4 shadow-sm">
         <div className="container mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-center tracking-wide">
-            Bella Vista Restaurant
+            Nome do Restaurante 
           </h1>
         </div>
       </nav>
@@ -47,7 +47,7 @@ const ReservationScreen = () => {
       {/* Restaurant Image */}
       <div className="w-full h-80 md:h-96 relative overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=1200&h=600&fit=crop" 
+          src="https://th.bing.com/th/id/OIP.mLmJD9X4a3Czvrvuea5b6AHaEo?rs=1&pid=ImgDetMain" 
           alt="Bella Vista Restaurant Interior" 
           className="w-full h-full object-cover"
         />
@@ -61,11 +61,11 @@ const ReservationScreen = () => {
           <div className="space-y-10">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-wine-900 mb-8 leading-tight">
-                Make Your Reservation
+                Faça sua Reserva
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed font-light">
-                Experience exceptional dining in an elegant atmosphere. Our carefully crafted menu 
-                features the finest ingredients and innovative culinary techniques.
+                Experimente uma refeição excepcional em um ambiente elegante. 
+                Nosso menu cuidadosamente elaborado apresenta os melhores ingredientes e técnicas culinárias inovadoras.
               </p>
             </div>
 
@@ -73,7 +73,7 @@ const ReservationScreen = () => {
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center text-wine-900 text-xl font-semibold">
                   <MapPin className="mr-3 h-5 w-5" />
-                  Location & Hours
+                  Local e Horários
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -82,7 +82,7 @@ const ReservationScreen = () => {
                   <p className="text-gray-600 leading-relaxed">
                     123 Gourmet Boulevard<br />
                     Downtown District, City 12345<br />
-                    Phone: (555) 123-4567
+                    Contato: (11) 99246-7438
                   </p>
                 </div>
                 <div>
