@@ -44,16 +44,6 @@ const ReservationScreen = () => {
         </div>
       </nav>
 
-      {/* Restaurant Image */}
-      <div className="w-full h-32 md:h-40 relative overflow-hidden">
-        <img 
-          src="https://www.kauaiexclusive.com/wp-content/uploads/2021/09/gallery-5-1500x630.jpg" 
-          alt="Bella Vista Restaurant Interior" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
-      </div>
-
       {/* Main Content */}
       <div className="container mx-auto px-4 py-6">
         <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
