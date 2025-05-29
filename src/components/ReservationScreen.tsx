@@ -39,7 +39,7 @@ const ReservationScreen = () => {
       <nav className="bg-wine-900 text-white py-3 px-4 shadow-sm">
         <div className="container mx-auto">
           <h1 className="text-xl md:text-2xl font-bold text-center tracking-wide">
-            Bella Vista Restaurant
+            Nome do Restaurante
           </h1>
         </div>
       </nav>
@@ -47,7 +47,7 @@ const ReservationScreen = () => {
       {/* Restaurant Image */}
       <div className="w-full h-32 md:h-40 relative overflow-hidden">
         <img 
-          src="https://th.bing.com/th/id/OIP.mLmJD9X4a3Czvrvuea5b6AHaEo?rs=1&pid=ImgDetMain" 
+          src="https://www.kauaiexclusive.com/wp-content/uploads/2021/09/gallery-5-1500x630.jpg" 
           alt="Bella Vista Restaurant Interior" 
           className="w-full h-full object-cover"
         />
@@ -61,7 +61,7 @@ const ReservationScreen = () => {
           <div className="space-y-4">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-wine-900 mb-3 leading-tight">
-                Make Your Reservation
+                Faça sua Reserva
               </h2>
               <p className="text-sm text-gray-600 leading-relaxed font-light mb-4">
                 Experience exceptional dining in an elegant atmosphere. Our carefully crafted menu features the finest ingredients and innovative culinary techniques.
@@ -100,14 +100,14 @@ const ReservationScreen = () => {
             <div className="w-full max-w-md">
               <Card className="border-none shadow-lg bg-white">
                 <CardHeader className="bg-wine-900 text-white text-center py-4">
-                  <CardTitle className="text-lg font-semibold">Reserve Your Table</CardTitle>
+                  <CardTitle className="text-lg font-semibold">Reserve Sua Mesa</CardTitle>
                 </CardHeader>
                 <CardContent className="p-5">
                   <form onSubmit={handleSubmit} className="space-y-4">
                     {/* Date Picker */}
                     <div className="space-y-1">
                       <Label htmlFor="date" className="text-wine-800 font-medium text-xs uppercase tracking-wide">
-                        Preferred Date
+                        Data
                       </Label>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -138,7 +138,7 @@ const ReservationScreen = () => {
                     {/* Time Picker */}
                     <div className="space-y-1">
                       <Label htmlFor="time" className="text-wine-800 font-medium text-xs uppercase tracking-wide">
-                        Preferred Time
+                        Horário
                       </Label>
                       <Select value={time} onValueChange={setTime}>
                         <SelectTrigger className="border-gray-200 hover:border-wine-300 h-9">
@@ -160,7 +160,7 @@ const ReservationScreen = () => {
                     {/* Number of People */}
                     <div className="space-y-1">
                       <Label htmlFor="people" className="text-wine-800 font-medium text-xs uppercase tracking-wide">
-                        Party Size
+                        Quantidade de Pessoas
                       </Label>
                       <Select value={people} onValueChange={setPeople}>
                         <SelectTrigger className="border-gray-200 hover:border-wine-300 h-9">
@@ -182,7 +182,7 @@ const ReservationScreen = () => {
                     {/* Notes */}
                     <div className="space-y-1">
                       <Label htmlFor="notes" className="text-wine-800 font-medium text-xs uppercase tracking-wide">
-                        Special Requests
+                        Observações:
                       </Label>
                       <Textarea
                         id="notes"
@@ -199,12 +199,12 @@ const ReservationScreen = () => {
                       className="w-full bg-wine-900 hover:bg-wine-800 text-white py-3 text-xs font-medium transition-all duration-200 mt-5"
                       disabled={!date || !time || !people}
                     >
-                      Confirm Reservation
+                       Confirmar Reserva
                     </Button>
                   </form>
 
                   <p className="text-xs text-gray-500 text-center mt-3 font-light">
-                    You will receive confirmation within 15 minutes.
+                    Você receberá a confirmação em até 15 minutos.
                   </p>
                 </CardContent>
               </Card>
