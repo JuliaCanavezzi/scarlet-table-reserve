@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { CalendarIcon, Clock, MapPin, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,18 +10,12 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
-
 const ReservationScreen = () => {
   const [date, setDate] = useState<Date>();
   const [time, setTime] = useState('');
   const [people, setPeople] = useState('');
   const [notes, setNotes] = useState('');
-
-  const timeSlots = [
-    '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
-    '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM'
-  ];
-
+  const timeSlots = ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM'];
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Reservation submitted:', {
@@ -32,11 +25,9 @@ const ReservationScreen = () => {
       notes
     });
   };
-
-  return (
-    <div className="min-h-screen bg-white font-playfair flex flex-col">
+  return <div className="min-h-screen bg-white font-playfair flex flex-col">
       {/* Navbar */}
-      <nav className="bg-wine-900 text-white py-4 px-4">
+      <nav className="text-white py-4 px-4 bg-wine-950">
         <div className="container mx-auto">
           <h1 className="text-xl font-bold text-center tracking-wide">
             Nome do Restaurante
@@ -90,7 +81,7 @@ const ReservationScreen = () => {
             <div className="flex justify-center">
               <div className="w-full max-w-sm">
                 <Card className="border-none shadow-lg bg-white">
-                  <CardHeader className="bg-wine-900 text-white text-center py-4">
+                  <CardHeader className="text-white text-center py-4 bg-wine-950">
                     <CardTitle className="text-lg font-semibold">Reserve Sua Mesa</CardTitle>
                   </CardHeader>
                   <CardContent className="p-6">
@@ -102,26 +93,13 @@ const ReservationScreen = () => {
                         </Label>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <Button
-                              variant="outline"
-                              className={cn(
-                                "w-full justify-start text-left font-normal border-gray-200 hover:border-wine-300 h-10",
-                                !date && "text-muted-foreground"
-                              )}
-                            >
+                            <Button variant="outline" className={cn("w-full justify-start text-left font-normal border-gray-200 hover:border-wine-300 h-10", !date && "text-muted-foreground")}>
                               <CalendarIcon className="mr-2 h-4 w-4" />
                               {date ? format(date, "dd/MM/yyyy") : <span className="text-sm">Selecione uma data</span>}
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
-                            <Calendar
-                              mode="single"
-                              selected={date}
-                              onSelect={setDate}
-                              disabled={(date) => date < new Date()}
-                              initialFocus
-                              className="pointer-events-auto"
-                            />
+                            <Calendar mode="single" selected={date} onSelect={setDate} disabled={date => date < new Date()} initialFocus className="pointer-events-auto" />
                           </PopoverContent>
                         </Popover>
                       </div>
@@ -139,11 +117,9 @@ const ReservationScreen = () => {
                             </div>
                           </SelectTrigger>
                           <SelectContent>
-                            {timeSlots.map((slot) => (
-                              <SelectItem key={slot} value={slot}>
+                            {timeSlots.map(slot => <SelectItem key={slot} value={slot}>
                                 {slot}
-                              </SelectItem>
-                            ))}
+                              </SelectItem>)}
                           </SelectContent>
                         </Select>
                       </div>
@@ -161,11 +137,9 @@ const ReservationScreen = () => {
                             </div>
                           </SelectTrigger>
                           <SelectContent>
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                              <SelectItem key={num} value={num.toString()}>
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => <SelectItem key={num} value={num.toString()}>
                                 {num} {num === 1 ? 'Pessoa' : 'Pessoas'}
-                              </SelectItem>
-                            ))}
+                              </SelectItem>)}
                           </SelectContent>
                         </Select>
                       </div>
@@ -175,21 +149,11 @@ const ReservationScreen = () => {
                         <Label htmlFor="notes" className="text-wine-800 font-medium text-xs uppercase tracking-wide">
                           Observações
                         </Label>
-                        <Textarea
-                          id="notes"
-                          placeholder="Restrições alimentares, ocasiões especiais..."
-                          value={notes}
-                          onChange={(e) => setNotes(e.target.value)}
-                          className="min-h-[60px] border-gray-200 hover:border-wine-300 focus:border-wine-500 resize-none text-sm"
-                        />
+                        <Textarea id="notes" placeholder="Restrições alimentares, ocasiões especiais..." value={notes} onChange={e => setNotes(e.target.value)} className="min-h-[60px] border-gray-200 hover:border-wine-300 focus:border-wine-500 resize-none text-sm" />
                       </div>
 
                       {/* Submit Button */}
-                      <Button
-                        type="submit"
-                        className="w-full bg-wine-900 hover:bg-wine-800 text-white py-3 text-sm font-medium transition-all duration-200 mt-6"
-                        disabled={!date || !time || !people}
-                      >
+                      <Button type="submit" disabled={!date || !time || !people} className="w-full text-white py-3 text-sm font-medium transition-all duration-200 mt-6 bg-wine-950 hover:bg-wine-800">
                         Confirmar Reserva
                       </Button>
                     </form>
@@ -206,15 +170,13 @@ const ReservationScreen = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-wine-900 text-white py-3 px-4">
+      <footer className="text-white py-3 px-4 bg-lime-900">
         <div className="container mx-auto">
           <p className="text-center text-sm">
             © 2024 Nome do Restaurante. Todos os direitos reservados.
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default ReservationScreen;
