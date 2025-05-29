@@ -30,7 +30,7 @@ const ReservationScreen = () => {
       {/* Navbar */}
       <nav className="text-white py-6 px-4 shadow-lg bg-wine-950">
         <div className="container mx-auto">
-          <h1 className="text-white font-cursive text-3xl md:text-4xl font-medium tracking-wide">
+          <h1 className="text-3xl md:text-4xl font-bold text-center tracking-wider">
             Bella Vista Restaurant
           </h1>
         </div>
@@ -48,7 +48,7 @@ const ReservationScreen = () => {
           {/* Left Side - Restaurant Information */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-cursive md:text-4xl font-bold text-wine-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-wine-900 mb-6">
                 Make Your Reservation
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
