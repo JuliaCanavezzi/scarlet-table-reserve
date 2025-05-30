@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { CalendarIcon, Clock, MapPin, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,7 +27,9 @@ const ReservationScreen = () => {
       notes
     });
   };
-  return <div className="min-h-screen bg-white font-playfair flex flex-col">
+
+  return (
+    <div className="min-h-screen bg-white font-playfair flex flex-col">
       {/* Navbar */}
       <nav className="text-white py-4 px-4 bg-wine-950">
         <div className="container mx-auto">
@@ -38,7 +41,7 @@ const ReservationScreen = () => {
 
       {/* Main Content - Centered */}
       <div className="flex-1 flex items-center justify-center px-4 py-8">
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Side - Restaurant Information */}
             <div className="space-y-6">
@@ -78,75 +81,78 @@ const ReservationScreen = () => {
               </Card>
             </div>
 
-            {/* Right Side - Reservation Form - Now Wider */}
+            {/* Right Side - Reservation Form */}
             <div className="flex justify-center">
-              <div className="w-full max-w-lg">
+              <div className="w-full max-w-4xl">
                 <Card className="border-none shadow-lg bg-white">
                   <CardHeader className="text-white text-center py-6 bg-[#5e0b16]">
                     <CardTitle className="text-xl font-semibold">Reserve Sua Mesa</CardTitle>
                   </CardHeader>
                   <CardContent className="p-8">
                     <form onSubmit={handleSubmit} className="space-y-6">
-                      {/* Date Picker */}
-                      <div className="space-y-3">
-                        <Label htmlFor="date" className="text-wine-800 font-medium text-sm uppercase tracking-wide">
-                          Data
-                        </Label>
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <Button variant="outline" className={cn("w-full justify-start text-left font-normal border-gray-200 hover:border-wine-300 h-12", !date && "text-muted-foreground")}>
-                              <CalendarIcon className="mr-3 h-5 w-5" />
-                              {date ? format(date, "dd/MM/yyyy") : <span className="text-base">Selecione uma data</span>}
-                            </Button>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0" align="start">
-                            <Calendar mode="single" selected={date} onSelect={setDate} disabled={date => date < new Date()} initialFocus className="pointer-events-auto" />
-                          </PopoverContent>
-                        </Popover>
-                      </div>
+                      {/* Horizontal Row for Date, Time, and People */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* Date Picker */}
+                        <div className="space-y-3">
+                          <Label htmlFor="date" className="text-wine-800 font-medium text-sm uppercase tracking-wide">
+                            Data
+                          </Label>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button variant="outline" className={cn("w-full justify-start text-left font-normal border-gray-200 hover:border-wine-300 h-12", !date && "text-muted-foreground")}>
+                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                {date ? format(date, "dd/MM") : <span className="text-sm">Selecione</span>}
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0" align="start">
+                              <Calendar mode="single" selected={date} onSelect={setDate} disabled={date => date < new Date()} initialFocus className="pointer-events-auto" />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
 
-                      {/* Time Picker */}
-                      <div className="space-y-3">
-                        <Label htmlFor="time" className="text-wine-800 font-medium text-sm uppercase tracking-wide">
-                          Horário
-                        </Label>
-                        <Select value={time} onValueChange={setTime}>
-                          <SelectTrigger className="border-gray-200 hover:border-wine-300 h-12">
-                            <div className="flex items-center">
-                              <Clock className="mr-3 h-5 w-5" />
-                              <SelectValue placeholder="Selecione um horário" />
-                            </div>
-                          </SelectTrigger>
-                          <SelectContent>
-                            {timeSlots.map(slot => (
-                              <SelectItem key={slot} value={slot}>
-                                {slot}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
+                        {/* Time Picker */}
+                        <div className="space-y-3">
+                          <Label htmlFor="time" className="text-wine-800 font-medium text-sm uppercase tracking-wide">
+                            Horário
+                          </Label>
+                          <Select value={time} onValueChange={setTime}>
+                            <SelectTrigger className="border-gray-200 hover:border-wine-300 h-12">
+                              <div className="flex items-center">
+                                <Clock className="mr-2 h-4 w-4" />
+                                <SelectValue placeholder="Horário" />
+                              </div>
+                            </SelectTrigger>
+                            <SelectContent>
+                              {timeSlots.map(slot => (
+                                <SelectItem key={slot} value={slot}>
+                                  {slot}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
 
-                      {/* Number of People */}
-                      <div className="space-y-3">
-                        <Label htmlFor="people" className="text-wine-800 font-medium text-sm uppercase tracking-wide">
-                          Quantidade de Pessoas
-                        </Label>
-                        <Select value={people} onValueChange={setPeople}>
-                          <SelectTrigger className="border-gray-200 hover:border-wine-300 h-12">
-                            <div className="flex items-center">
-                              <Users className="mr-3 h-5 w-5" />
-                              <SelectValue placeholder="Número de pessoas" />
-                            </div>
-                          </SelectTrigger>
-                          <SelectContent>
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                              <SelectItem key={num} value={num.toString()}>
-                                {num} {num === 1 ? 'Pessoa' : 'Pessoas'}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        {/* Number of People */}
+                        <div className="space-y-3">
+                          <Label htmlFor="people" className="text-wine-800 font-medium text-sm uppercase tracking-wide">
+                            Pessoas
+                          </Label>
+                          <Select value={people} onValueChange={setPeople}>
+                            <SelectTrigger className="border-gray-200 hover:border-wine-300 h-12">
+                              <div className="flex items-center">
+                                <Users className="mr-2 h-4 w-4" />
+                                <SelectValue placeholder="Qtd" />
+                              </div>
+                            </SelectTrigger>
+                            <SelectContent>
+                              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                                <SelectItem key={num} value={num.toString()}>
+                                  {num} {num === 1 ? 'Pessoa' : 'Pessoas'}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
                       </div>
 
                       {/* Notes */}
@@ -192,7 +198,8 @@ const ReservationScreen = () => {
           </p>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
 
 export default ReservationScreen;
