@@ -84,7 +84,7 @@ const ReservationScreen = () => {
             {/* Right Side - Reservation Form */}
             <div className="flex justify-center">
               <div className="w-full max-w-4xl">
-                <Card className="border-none shadow-lg bg-white">
+                <Card className="border-none shadow-lg bg-white font-sans">
                   <CardHeader className="text-white text-center py-6 bg-[#5e0b16]">
                     <CardTitle className="text-xl font-semibold">Reserve Sua Mesa</CardTitle>
                   </CardHeader>
